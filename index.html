@@ -4,11 +4,66 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Form Examples</title>
-    <script type="module" crossorigin src="/learn-jsonforms/assets/index-BhX6L0lG.js"></script>
-    <link rel="stylesheet" crossorigin href="/learn-jsonforms/assets/index-Bhp0LIXS.css">
+    <title>Kong plugin UI playground</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+      .archive-notice {
+        text-align: center;
+        padding: 30px;
+        border: 2px solid #333;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        line-height: 1.6;
+      }
+      .countdown {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #666;
+      }
+    </style>
   </head>
   <body>
-    <div id="app" class="isolate"></div>
+    <div class="archive-notice">
+      This is an archived project, please visit the <a href="https://github.com/Kong/plugin-ui-playground">GitHub repository</a> for more information.
+      <div class="countdown" id="countdown">Redirecting to <a href="https://kong.github.io/plugin-ui-playground/">https://kong.github.io/plugin-ui-playground/</a> in: <span id="timer">3</span> seconds</div>
+    </div>
+
+    <script>
+      let countdown = 3;
+      const timerElement = document.getElementById('timer');
+      const githubUrl = 'https://kong.github.io/plugin-ui-playground/';
+
+      const updateTimer = () => {
+        timerElement.textContent = countdown;
+        if (countdown <= 0) {
+          window.location.href = githubUrl;
+        } else {
+          countdown--;
+        }
+      };
+
+      // Display initial timer immediately
+      updateTimer();
+
+      // Update countdown every second
+      const interval = setInterval(() => {
+        updateTimer();
+        if (countdown < 0) {
+          clearInterval(interval);
+        }
+      }, 1000);
+    </script>
   </body>
 </html>
