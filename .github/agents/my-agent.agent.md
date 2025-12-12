@@ -8,8 +8,8 @@ name: test
 description: 根据用户的输入更新 readme.md
 ---
 
-帮我把用户提供的 {{version}} 和 {{date}} 更新到 readme.md 中，格式如下
+帮我把用户提供的 {{version}} 和 {{date}} 更新到 readme.md 中，date 是可选的，格式如下
 ```md
 Version: {{version}}
-Date: {{data}}
+Date: {{data}} # 只有用户提供了才写
 ```
